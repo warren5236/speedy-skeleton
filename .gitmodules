@@ -1,0 +1,3 @@
+[submodule "library/speedy"]
+	path = library/speedy
+	url = git@github.com:warren5236/speedy.git
