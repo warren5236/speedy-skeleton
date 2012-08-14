@@ -1,18 +1,7 @@
 <?php
 
-class IndexController extends Zend_Controller_Action
+class IndexController extends Speedy_Controllers_Generic
 {
-
-    public function init()
-    {
-        /* Initialize action controller here */
-    }
-
-    public function indexAction()
-    {
-
-    }
-
 
 }
 
