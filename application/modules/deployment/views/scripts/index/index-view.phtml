@@ -1,0 +1,6 @@
+<div class="four columns">
+	<h3><?php echo $this->item->getName();?></h3>
+	<div><?php echo $this->item->getDescription();?></div>
+	<div><?php echo ($this->item->getAutoRun()?'auto runs':''); ?></div>
+	<div><a href="<?php echo $this->url(array('action'=>'runnow', 'class'=>get_class($this->item)),'default') ?>">Run Now</a>
+</div>
