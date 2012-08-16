@@ -7,23 +7,15 @@ class Deployment_Model_Index extends Speedy_Models_Generic{
 		$returnVal = array();
 		
 		// determine the files we should import
-		$dirname = APPLICATION_PATH . '/modules/deployment/models/tasks/*.php';
-		$files = glob($dirname);
+		$dirname = APPLICATION_PATH . '/modules/deployment/models/tasks/';
+		$files = glob($dirname . '*.php');
 		
 		foreach($files as $file){
 			// find
 			if(preg_match('/Generic\.php$/', $file) == 0){
-				$className = str_replace(APPLICATION_PATH . '/modules/', '', $file);
+				$className = str_replace($dirname, '', $file);
 				
-				// build up the class name
-				$allClass = explode('/', $className);
-				
-				for($current = 0; $current < count($allClass); $current++){
-					$allClass[$current] = ucwords($allClass[$current]);
-				}
-				
-				$className = implode('_', $allClass);
-				$className = str_replace('.php','',$className);
+				$className = 'Deployment_Model_Tasks_' . str_replace('.php','',$className);
 				
 				require_once($file);
 				$newClass = new $className();

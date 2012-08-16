@@ -1,5 +1,5 @@
 <?php
-class Deployment_Model_Tasks_Generic{
+abstract class Deployment_Model_Tasks_Generic{
 	
 	protected $_name = 'Override $_name';
 	
@@ -18,4 +18,6 @@ class Deployment_Model_Tasks_Generic{
 	public function getName(){
 		return $this->_name;
 	}
+	
+	public abstract function runTask();
 }
