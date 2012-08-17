@@ -1,6 +1,6 @@
 		<?php 
 			// add the global JS
-			$this->JS()->prependFolder('global', APPLICATION_PATH . '/scripts/');
+			$this->JS()->prependFolder('global', APPLICATION_PATH . '/modules/default/scripts/');
 			echo $this->JS()->getScript('global');
 			echo $this->JS()->getScript('module');
 		?>
