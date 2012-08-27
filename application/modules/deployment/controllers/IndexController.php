@@ -13,7 +13,8 @@ class Deployment_IndexController extends Speedy_Controllers_Generic
 		$className = $this->_getParam('class');
 		$instance = new $className();
 		
-		$this->view->results = $instance->runTask();
+		$this->view->result = $instance->runTask();
+		$this->view->results = $instance->getResultsHtml();
 		$this->view->pageTitle = $instance->getName();
 	}
 }

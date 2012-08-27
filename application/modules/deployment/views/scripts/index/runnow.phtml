@@ -1,5 +1,7 @@
-<ul><li>
-<?php
-echo implode('</li><li>',$this->results);
-?>
-</li></ul>
+<?php if($this->result):?>
+	Success
+<?php else: ?>
+	Failure
+<?php endif;
+
+echo $this->results;

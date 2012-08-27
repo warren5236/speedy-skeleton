@@ -23,5 +23,20 @@ abstract class Deployment_Model_Tasks_Generic{
 		return true;
 	}
 	
+	protected $_results = array();
+	
+	public function getResultsHtml(){
+		$returnVal= implode("\n", $this->_results);
+		
+		$returnVal = preg_replace('/^#([^#].+)$/m', '<h2>$1</h2>', $returnVal);
+		$returnVal = preg_replace('/^##([^#].+)$/m', '<h3>$1</h3>', $returnVal);
+		
+		return $returnVal;
+	}
+	
+	protected function _addResult($value){
+		$this->_results[] = $value;
+	}
+	
 	public abstract function runTask();
 }

@@ -28,11 +28,11 @@ class Deployment_Model_Tasks_Wipestaticfiles extends Deployment_Model_Tasks_Gene
 		foreach($this->_allDirectories() as $dir){
 			// open the directory
 			if(!is_dir($dir)){
-				$returnVal[] = $dir . ' is not a valid path';
+				$this->_addResult($dir . ' is not a valid path');
 				continue;
 			}
 			
-			$returnVal[] = 'Checking ' . $dir;
+			$this->_addResult('##Checking ' . $dir);
 			
 			if($handle = opendir($dir)){
 				while(($file = readdir($handle)) !== false){
@@ -40,9 +40,9 @@ class Deployment_Model_Tasks_Wipestaticfiles extends Deployment_Model_Tasks_Gene
 					if(!in_array($file, $this->_keepFiles)){
 						// attempt to delete the file and report what happened
 						if(!unlink($dir . '/' . $file)){
-							$returnVal[] = 'Unable to delete ' . $file;
+							$this->_addResult('* Unable to delete ' . $file);
 						} else {
-							$returnVal[] = $file . ' deleted';
+							$this->_addResult('*' . $file . ' deleted');
 						}
 						
 					}
@@ -51,6 +51,6 @@ class Deployment_Model_Tasks_Wipestaticfiles extends Deployment_Model_Tasks_Gene
 			}
 		}
 		
-		return $returnVal;
+		return true;
 	}
 }
