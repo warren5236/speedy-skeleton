@@ -1,12 +1,7 @@
 return array(
 	'siteheader' => array(
 		'description'=>'Site specific header information',
-		'enabled' => false,
-		'sites'=>array(
-			'development' => array(
-				'startDate'=>'2012-08-26'
-			)
-		)
+		'enabled' => false
 	),
 	'help' => array(
 		'description'=>'The help module',

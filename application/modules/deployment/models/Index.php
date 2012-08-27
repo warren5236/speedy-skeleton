@@ -20,7 +20,9 @@ class Deployment_Model_Index extends Speedy_Models_Generic{
 				require_once($file);
 				$newClass = new $className();
 				
-				$returnVal[$newClass->getName()] = $newClass;
+				if($newClass->isEnabled()){
+					$returnVal[$newClass->getName()] = $newClass;
+				}
 			}
 			
 		}

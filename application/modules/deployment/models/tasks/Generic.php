@@ -19,5 +19,9 @@ abstract class Deployment_Model_Tasks_Generic{
 		return $this->_name;
 	}
 	
+	public function isEnabled(){
+		return true;
+	}
+	
 	public abstract function runTask();
 }
