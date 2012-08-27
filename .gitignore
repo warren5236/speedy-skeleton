@@ -5,3 +5,4 @@ application/layouts/scripts/index.html
 application/modules/backend/
 application/modules/report/
 application/modules/user
+application/configs/speedy.192.168.1.65.xip.io.ini

@@ -17,10 +17,18 @@ set_include_path(implode(PATH_SEPARATOR, array(
 /** Zend_Application */
 require_once 'Zend/Application.php';
 
+// determine the config file to use
+$configFile = APPLICATION_PATH . '/configs/application.ini';
+
+// check to see if there is a hostname specific config
+if(is_file(APPLICATION_PATH . '/configs/' . $_SERVER['HTTP_HOST'] . '.ini')){
+	$configFile = APPLICATION_PATH . '/configs/' . $_SERVER['HTTP_HOST'] . '.ini';
+}
+
 // Create application, bootstrap, and run
 $application = new Zend_Application(
     APPLICATION_ENV,
-    APPLICATION_PATH . '/configs/application.ini'
+    $configFile
 );
 $application->bootstrap()
             ->run();
