@@ -2,24 +2,28 @@
 	<div class="container">
 		<div class="thirteen columns">
 			<ul id="siteLinks">
-				<li><a href="<?php echo $this->url(array('module'=>'help', 'controller'=>'index', 'action'=>'index'),'default',true);?>">Help</a></li>
-				<li><a href="<?php echo $this->url(array('module'=>'help', 'controller'=>'helprequest', 'action'=>'index'),'default',true);?>">Problems With This Page?</a></li>
+				<?php if(Speedy_Featuretoggle::enabled('help')):?>
+					<li><a href="<?php echo $this->url(array('module'=>'help', 'controller'=>'index', 'action'=>'index'),'default',true);?>">Help</a></li>
+					<li><a href="<?php echo $this->url(array('module'=>'help', 'controller'=>'helprequest', 'action'=>'index'),'default',true);?>">Problems With This Page?</a></li>
+				<?php endif;?>
 			</ul>
 		</div>
 		<div class="three columns">
-			<div id="userInformation">
-				<img src="">
-				<a href="">UserName</a> 
-			</div>
+			<?php if(Speedy_Featuretoggle::enabled('user')):?>
+				<div id="userInformation">
+					<img src="">
+					<a href="">UserName</a> 
+				</div>
+			<?php endif;?>
 		</div>
 		
 		<?php if(Speedy_Featuretoggle::enabled('siteheader')):?>
-		<div class="four columns">
-			<h1><a href="/">Site</a></h1> 
-		</div>
-		<div class="twelve columns">
-			Page Nav goes here
-		</div>
+			<div class="four columns">
+				<h1><a href="/">Site</a></h1> 
+			</div>
+			<div class="twelve columns">
+				Page Nav goes here
+			</div>
 		<?php endif;?>
 	</div>
 </div>
