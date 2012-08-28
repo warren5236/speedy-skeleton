@@ -6,6 +6,13 @@ class Deployment_Model_Tasks_Healthcheck extends Deployment_Model_Tasks_Generic{
 	
 	protected $_autoRun = true;
 	
+	protected $_directories = array(
+		'/public/css/',
+		'/public/images/',
+		'/public/scripts/',
+		'/tmp'
+	);
+	
 	protected $_modules = array(
 		'required'=>array('mod_rewrite'=>'This module is so required I\'m not even sure how you\'re seeing this message.'),
 		'nicetohave'=>array(
@@ -14,6 +21,30 @@ class Deployment_Model_Tasks_Healthcheck extends Deployment_Model_Tasks_Generic{
 				'mod_gzip'=>'Compresses static files'
 		)
 	);
+	
+	public function _checkDirectories(){
+		$this->_addResult('## Directory Check');
+		
+		$returnVal = true;
+		
+		// loop through all the directories
+		foreach($this->_directories as $dir){
+			$dir = dirname(APPLICATION_PATH) . $dir;
+			
+			// check to see if the directory exists
+			if(!is_dir($dir)){
+				$this->_addResult('* Missing directory: ' . $dir);
+				$returnVal = false;
+			} else {
+				if(!is_writable($dir)){
+					$this->_addResult('* Unwriteable directory: ' . $dir);
+					$returnVal = false;
+				}
+			}
+		}
+		
+		return $returnVal;
+	}
 	
 	public function _checkModules(){
 		
@@ -49,6 +80,10 @@ class Deployment_Model_Tasks_Healthcheck extends Deployment_Model_Tasks_Generic{
 		$returnVal = true;
 		
 		if(!$this->_checkModules()){
+			$returnVal = false;
+		}
+		
+		if(!$this->_checkDirectories()){
 			$returnVal = false;
 		}
 		

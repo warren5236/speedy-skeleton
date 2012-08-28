@@ -30,6 +30,7 @@ abstract class Deployment_Model_Tasks_Generic{
 		
 		$returnVal = preg_replace('/^#([^#].+)$/m', '<h2>$1</h2>', $returnVal);
 		$returnVal = preg_replace('/^##([^#].+)$/m', '<h3>$1</h3>', $returnVal);
+		$returnVal = preg_replace('/^\*(.+)$/m', '<li>$1</li>', $returnVal);
 		
 		return $returnVal;
 	}
