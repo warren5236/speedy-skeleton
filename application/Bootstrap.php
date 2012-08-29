@@ -1,5 +1,4 @@
 <?php
-
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
 	protected function _initFeatureToggles(){
@@ -13,6 +12,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		}
 		
 		$featuretoggle->setSettings($settings);
+	}
+	
+	protected function _initEnablePlugins(){
+		$front = Zend_Controller_Front::getInstance();
+		$front->registerPlugin(new Speedy_Plugins_Maintenance());
 	}
 }
 
