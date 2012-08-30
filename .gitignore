@@ -1,6 +1,5 @@
 public/css/*.css
 public/scripts/*.js
-library/speedy
 application/layouts/scripts/index.html
 application/modules/backend/
 application/modules/report/
